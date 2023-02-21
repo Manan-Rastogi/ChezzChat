@@ -1,10 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import AppBody from "./Components/AppBody";
+import Navbar from "./Components/Navbar";
 
 function App() {
   return (
-   <>
-   </>
+    <>
+      <Navbar title={"Chezz"}/>
+      <AppBody />
+    </>
   );
 }
 
