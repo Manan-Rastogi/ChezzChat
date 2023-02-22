@@ -1,4 +1,5 @@
 import React from "react";
+import Chat from "./Chat";
 
 export default function ChatScreen(props) {
   const styleCardChat = {
@@ -15,6 +16,7 @@ export default function ChatScreen(props) {
   };
   const styleCardChatDetails = {
     marginTop: "10px",
+    backgroundColor: "#2af7f3",
   };
 
   const handleChatSubmitButton = () => {
@@ -23,54 +25,16 @@ export default function ChatScreen(props) {
   return (
     <>
       <div className="card" style={styleCardChat}>
-        <div className="card" style={styleCardChatDetails}>
-          <div className="card-body">This is some text within a card body.</div>
-        </div>
-        <div className="card" style={styleCardChatDetails}>
-          <div className="card-body">This is some text within a card body.</div>
-        </div>
-        <div className="card" style={styleCardChatDetails}>
-          <div className="card-body">This is some text within a card body.</div>
-        </div>
-        <div className="card" style={styleCardChatDetails}>
-          <div className="card-body">This is some text within a card body.</div>
-        </div>
-        <div className="card" style={styleCardChatDetails}>
-          <div className="card-body">This is some text within a card body.</div>
-        </div>
-        <div className="card" style={styleCardChatDetails}>
-          <div className="card-body">This is some text within a card body.</div>
-        </div>
-        <div className="card" style={styleCardChatDetails}>
-          <div className="card-body">This is some text within a card body.</div>
-        </div>
-        <div className="card" style={styleCardChatDetails}>
-          <div className="card-body">This is some text within a card body.</div>
-        </div>
-        <div className="card" style={styleCardChatDetails}>
-          <div className="card-body">This is some text within a card body.</div>
-        </div>
-        <div className="card" style={styleCardChatDetails}>
-          <div className="card-body">This is some text within a card body.</div>
-        </div>
-        <div className="card" style={styleCardChatDetails}>
-          <div className="card-body">This is some text within a card body.</div>
-        </div>
-        <div className="card" style={styleCardChatDetails}>
-          <div className="card-body">This is some text within a card body.</div>
-        </div>
-        <div className="card" style={styleCardChatDetails}>
-          <div className="card-body">This is some text within a card body.</div>
-        </div>
-        <div className="card" style={styleCardChatDetails}>
-          <div className="card-body">This is some text within a card body.</div>
-        </div>
-        <div className="card" style={styleCardChatDetails}>
-          <div className="card-body">This is some text within a card body.</div>
-        </div>
-        <div className="card" style={styleCardChatDetails}>
-          <div className="card-body">This is some text within a card body.</div>
-        </div>
+        <Chat ChatStyle={styleCardChatDetails} chatText={"Some Text Chat"}/>
+        <Chat ChatStyle={styleCardChatDetails} chatText={"Some Text Chat"}/>
+        <Chat ChatStyle={styleCardChatDetails} chatText={"Some Text Chat"}/>
+        <Chat ChatStyle={styleCardChatDetails} chatText={"Some Text Chat"}/>
+        <Chat ChatStyle={styleCardChatDetails} chatText={"Some Text Chat"}/>
+        <Chat ChatStyle={styleCardChatDetails} chatText={"Some Text Chat"}/>
+        <Chat ChatStyle={styleCardChatDetails} chatText={"Some Text Chat"}/>
+        <Chat ChatStyle={styleCardChatDetails} chatText={"Some Text Chat"}/>
+        <Chat ChatStyle={styleCardChatDetails} chatText={"Some Text Chat"}/>
+        <Chat ChatStyle={styleCardChatDetails} chatText={"Some Text Chat"}/>
       </div>
       <div className="card" style={styleCardSendChat}>
         <div className="row">
@@ -80,8 +44,12 @@ export default function ChatScreen(props) {
             </div>
           </div>
           <div className="col-3 col-md-2">
-            <div className="card-body d-flex justify-content-center">
-              <button type="submit" onClick={handleChatSubmitButton} style={{ width: "100%"}}>
+            <div className="card-body">
+              <button
+                type="submit"
+                onClick={handleChatSubmitButton}
+                style={{ width: "100%" }}
+              >
                 Send
               </button>
             </div>

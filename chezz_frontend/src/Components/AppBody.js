@@ -8,7 +8,7 @@ export default function AppBody() {
       <div className="container-fluid">
         <div className="row">
           <div className="col-4 col-md-3">
-            <SidePanel></SidePanel>
+            <SidePanel maxGroups={2}></SidePanel>
           </div>
           <div className="col-8 col-md-9"><ChatScreen /></div>
         </div>

@@ -6,7 +6,7 @@ export default function Navbar(props) {
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
           <a className="navbar-brand" href="#">
-            {props.title}
+          <img src={require("../Images/ChezzWhite.jpg")} style={{height:35, width:100}}/>
           </a>
           <button
             className="navbar-toggler"
