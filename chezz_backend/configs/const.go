@@ -1,5 +1,7 @@
 package configs
 
+import "context"
+
 // HOME OF ALL GLOBAL VARIABLES
 type Config struct {
 	USER     string `mapstructure:"USER"`
@@ -10,3 +12,5 @@ type Config struct {
 }
 
 var CONFIG Config
+
+var DBCtx context.Context

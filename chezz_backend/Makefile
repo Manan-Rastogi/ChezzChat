@@ -4,4 +4,7 @@ migrateup:
 rmlog:
 	rm chezz.log
 
-.PHONY: migrateup rmlog
+test:
+	go test -v -cover ./...
+
+.PHONY: migrateup rmlog test

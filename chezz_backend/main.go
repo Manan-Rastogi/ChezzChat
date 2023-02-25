@@ -1,48 +1,30 @@
 package main
 
 import (
-	"context"
+	"io"
+	"os"
 	"regexp"
-
-	"time"
 
 	"github.com/Manan-Rastogi/chezz/configs"
 	"github.com/Manan-Rastogi/chezz/helpers"
+	"github.com/Manan-Rastogi/chezz/middleware"
 	"github.com/Manan-Rastogi/chezz/models"
 	"github.com/gin-contrib/cors"
-	"github.com/gin-gonic/gin"
 
-	"github.com/gin-contrib/logger"
+	"github.com/gin-gonic/gin"
 )
 
 var rxURL = regexp.MustCompile(`^/regexp\d*`)
 
 func main() {
 	helpers.Logger.Info("Chezz Service Started!!")
-	start := time.Now()
-	ctx := context.Background()
+	models.DB = models.Init()
 
-	db := &models.DB{}
-	db.ConfigureDB(ctx)
-
-	ctx = context.WithValue(ctx, "start", start)
+	logFile := generateGinLoggerFile()
+	gin.DefaultWriter = io.MultiWriter(logFile, os.Stdout)
 
 	router := gin.New()
-	router.Use(gin.Recovery(), logger.SetLogger(
-		
-		logger.WithUTC(true),
-		logger.WithSkipPathRegexp(rxURL),
-	), cors.New(cors.Config{
-		AllowOrigins:     []string{"*"},
-		AllowMethods:     []string{"GET", "POST", "UPDATE", "DELETE"},
-		AllowHeaders:     []string{"*"},
-		AllowCredentials: true,
-		MaxAge:           12 * time.Hour,
-		// ExposeHeaders:    []string{"Content-Length", "Content-Type"},
-		// AllowOriginFunc: func(origin string) bool {
-		// 	return origin == "https://github.com"
-		// },
-	}))
+	router.Use(gin.Recovery(), middleware.Logger(logFile), cors.New(middleware.CorsPolicy()))
 	setUpRoutes(router)
 
 	router.Run(configs.CONFIG.PORT)

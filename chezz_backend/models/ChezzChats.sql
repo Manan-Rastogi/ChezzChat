@@ -8,7 +8,8 @@ CREATE TABLE `users` (
 
 CREATE TABLE `groups` (
   `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  `name` varchar(30) NOT NULL,
+  `name` varchar(30) UNIQUE NOT NULL,
+  `creator` varchar(30) NOT NULL,
   `created_at` datetime DEFAULT (now())
 );
 
