@@ -3,21 +3,21 @@ CREATE TABLE `users` (
   `name` varchar(30) NOT NULL,
   `email` varchar(50) UNIQUE NOT NULL,
   `password` varchar(50) NOT NULL,
-  `created_at` datetime DEFAULT (now())
+  `created_at` timestamp DEFAULT (now())
 );
 
 CREATE TABLE `groups` (
   `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `name` varchar(30) UNIQUE NOT NULL,
   `creator` varchar(30) NOT NULL,
-  `created_at` datetime DEFAULT (now())
+  `created_at` timestamp DEFAULT (now())
 );
 
 CREATE TABLE `group_members` (
   `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `groupId` int NOT NULL,
   `userId` int NOT NULL,
-  `joined_at` datetime DEFAULT (now())
+  `joined_at` timestamp DEFAULT (now())
 );
 
 CREATE TABLE `group_chat` (
@@ -25,14 +25,14 @@ CREATE TABLE `group_chat` (
   `groupId` int NOT NULL,
   `userId` int NOT NULL,
   `message` text NOT NULL,
-  `created_at` datetime DEFAULT (now())
+  `created_at` timestamp DEFAULT (now())
 );
 
 CREATE TABLE `friends` (
   `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `userId` int NOT NULL,
   `friendId` int NOT NULL,
-  `created_at` datetime DEFAULT (now())
+  `created_at` timestamp DEFAULT (now())
 );
 
 CREATE INDEX `users_index_0` ON `users` (`name`);
@@ -62,3 +62,11 @@ ALTER TABLE `friends` ADD FOREIGN KEY (`userId`) REFERENCES `users` (`id`);
 ALTER TABLE `friends` ADD FOREIGN KEY (`friendId`) REFERENCES `users` (`id`);
 
 ALTER TABLE `group_chat` ADD FOREIGN KEY (`userId`) REFERENCES `group_chat` (`id`);
+
+
+drop table `friends`;
+drop table `group_chat`;
+drop table `group_members`;
+drop table `groups`;
+drop table `users`;
+
